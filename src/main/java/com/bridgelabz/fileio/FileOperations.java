@@ -88,7 +88,7 @@ public class FileOperations {
 		Path path = Paths.get("C:/demo/demo.txt");
 		try {
 			String fileContent = Files.readString(path);
-			String []words = fileContent.split(" |\\n");
+			String []words = fileContent.split(",");
 			System.out.println("The number of entries in File: " + words.length );
 			return true;
 		} catch (IOException e) {
@@ -100,7 +100,7 @@ public class FileOperations {
 	public static boolean writeToFile(String filePath, Employee employee1) {
 		Path path = Paths.get(filePath);
 		try {
-			Files.writeString(path,employee1.toString());
+			Files.writeString(path,employee1.toString() + ",\n");
 			return true;
 		} catch (IOException e) {
 			System.out.println("The file was not found");
