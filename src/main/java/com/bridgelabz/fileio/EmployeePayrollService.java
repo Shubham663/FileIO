@@ -1,5 +1,10 @@
 package com.bridgelabz.fileio;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class EmployeePayrollService {
@@ -20,7 +25,10 @@ public class EmployeePayrollService {
 	}
 
 	public static void main(String[] args) {
-		Employee employee1 = getEmployee();
-		System.out.println(employee1);
+		Path path = Paths.get("F:/");
+		if (Files.exists(path))
+			System.out.println("The file exists");
+		else
+			System.out.println("The file is not found");
 	}
 }
