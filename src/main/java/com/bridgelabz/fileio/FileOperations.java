@@ -80,4 +80,31 @@ public class FileOperations {
 		}
 		return false;
 	}
+
+	/**
+	 * @return returns true if file read successfully
+	 */
+	public static boolean noOfEntries() {
+		Path path = Paths.get("C:/demo/demo.txt");
+		try {
+			String fileContent = Files.readString(path);
+			String []words = fileContent.split(" |\\n");
+			System.out.println("The number of entries in File: " + words.length );
+			return true;
+		} catch (IOException e) {
+			System.out.println("The mentioned directory was not found");
+		}
+		return false;
+	}
+
+	public static boolean writeToFile(String filePath, Employee employee1) {
+		Path path = Paths.get(filePath);
+		try {
+			Files.writeString(path,employee1.toString());
+			return true;
+		} catch (IOException e) {
+			System.out.println("The file was not found");
+		}
+		return false;
+	}
 }
