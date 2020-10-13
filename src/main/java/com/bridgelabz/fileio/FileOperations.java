@@ -100,11 +100,28 @@ public class FileOperations {
 	public static boolean writeToFile(String filePath, Employee employee1) {
 		Path path = Paths.get(filePath);
 		try {
-			Files.writeString(path,employee1.toString() + ",\n");
+			String previous = Files.readString(path);
+			Files.writeString(path,previous + "," + employee1.toString() + ",");
 			return true;
 		} catch (IOException e) {
 			System.out.println("The file was not found");
 		}
 		return false;
 	}
+
+	public static boolean readFile() {
+		Path path = Paths.get("C:/demo/demo.txt");
+		try {
+			String fileContent = Files.readString(path);
+			String []employees = fileContent.split(",");
+			for(String employee:employees)
+				System.out.println(employee);
+			return true;
+		} catch (IOException e) {
+			System.out.println("The mentioned directory was not found");
+		}
+		return false;
+	}
+	
+	
 }
