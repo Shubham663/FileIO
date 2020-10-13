@@ -131,6 +131,17 @@ public class EmployeeTest {
 		assertTrue(FileOperations.writeToFile("C:/demo/demo.txt",employee2));
 		assertTrue(FileOperations.noOfEntries());
 	}
+	
+	@Test
+	public void readDetailsFromFileTest_Correct() {
+		Employee employee1 = EmployeePayrollService.getEmployee();
+		Employee employee2 = employee1;
+		assertTrue(FileOperations.createDirectory("C:", "C:/demo"));
+		assertTrue(FileOperations.createFile("C:/demo", "C:/demo/demo.txt"));
+		assertTrue(FileOperations.writeToFile("C:/demo/demo.txt",employee1));
+		assertTrue(FileOperations.writeToFile("C:/demo/demo.txt",employee2));
+		assertTrue(FileOperations.readFile());
+	}
 	@After
 	public void remove() {
 		path = Paths.get("C:/demo");
