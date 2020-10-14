@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
@@ -125,7 +126,7 @@ public class EmployeeTest {
 	public void createWatchlist_Correct() {
 		 Path dir = Paths.get("F:/youtube/");
 	     try {
-			new Java8WatchServiceExample(dir).processEvents();
+			new FileOperations().new Java8WatchServiceExample(dir).processEvents();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -149,33 +150,36 @@ public class EmployeeTest {
 	@Test
 	public void readDetailsFromFileTest_Correct() {
 		Employee employee1 = EmployeePayrollService.getEmployee();
+		List<Employee> employeesInFile = null;
 		Employee employee2 = employee1;
 		assertTrue(FileOperations.createDirectory("F:", "F:/demo"));
 		assertTrue(FileOperations.createFile("F:/demo", "F:/demo/demo.txt"));
 		assertTrue(FileOperations.writeToFile("F:/demo/demo.txt",employee1));
 		assertTrue(FileOperations.writeToFile("F:/demo/demo.txt",employee2));
-		assertTrue(FileOperations.readFile());
+		employeesInFile = FileOperations.readFile();
+		assertNotNull(employeesInFile);
+		System.out.println(employeesInFile);
 	}
-	@After
-	public void remove() {
-		path = Paths.get("F:/demo");
-		if (Files.exists(path)) {
-			path = Paths.get("F:/demo/demo.txt");
-			if (Files.exists(path)) {
-				try {
-					Files.delete(path);
-				} catch (IOException e) {
-					System.out.println("The file does not exist");
-					e.printStackTrace();
-				}
-			}
-			path = Paths.get("F:/demo");
-			try {
-				Files.delete(path);
-			} catch (IOException e) {
-				System.out.println("The directory does not exist");
-				e.printStackTrace();
-			}
-		}
-	}
+//	@After
+//	public void remove() {
+//		path = Paths.get("F:/demo");
+//		if (Files.exists(path)) {
+//			path = Paths.get("F:/demo/demo.txt");
+//			if (Files.exists(path)) {
+//				try {
+//					Files.delete(path);
+//				} catch (IOException e) {
+//					System.out.println("The file does not exist");
+//					e.printStackTrace();
+//				}
+//			}
+//			path = Paths.get("F:/demo");
+//			try {
+//				Files.delete(path);
+//			} catch (IOException e) {
+//				System.out.println("The directory does not exist");
+//				e.printStackTrace();
+//			}
+//		}
+//	}
 }
