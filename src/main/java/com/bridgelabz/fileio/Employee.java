@@ -24,7 +24,7 @@ public class Employee {
 	 */
 	@Override
 	public String toString() {
-		return ("The employee details are as follows:\nEmployeeID: " + employeeId + "\nName: " + name + "\nSalary: "
+		return ("EmployeeID:" + employeeId + ",Name:" + name + ",Salary:"
 				+ salary + "\n");
 	}
 }
